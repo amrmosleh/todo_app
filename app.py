@@ -13,8 +13,6 @@ __description__ = "TO-DO application for CICD"
 '''
 
 app = Flask(__name__)
-#  it refers to a class
-
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
 db = SQLAlchemy(app)
@@ -22,9 +20,6 @@ db = SQLAlchemy(app)
 class Todo(db.Model):
     """A dummy docstring."""
     id = db.Column(db.Integer, primary_key=True)
-    # creating a variable "id". In this variable I eant to  initiate my database. Specifically, I want to initailize a column of my table /database. the function db.column() takes agrmants or parameters. more to read on https//fflask-sqlalchemy.paletprojects/com/en/2.x/.api
-
-
     title = db.Column(db.String(100))
     complete = db.Column(db.Boolean)
 
