@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+          <!-- As for the charset meta tag, always use <meta charset="utf-8"> as: It’s backwards compatible and works in all known browsers, so it should always be used over the old <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">. The charset value should be utf-8, not any other values such as utf8. -->
+        <!-- character_set	Specifies the character encoding for the HTML document. The HTML5 specification encourages web developers to use the UTF-8 character set! -->
+
+        <meta charset="utf-8">
+        <meta 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- The viewport is the user's visible area of a web page.
+The viewport varies with the device, and will be smaller on a mobile phone than on a computer screen.
+Before tablets and mobile phones, web pages were designed only for computer screens, and it was common for web pages to have a static design and a fixed size.
+Then, when we started surfing the internet using tablets and mobile phones, fixed size web pages were too large to fit the viewport. To fix this, browsers on those devices scaled down the entire web page to fit the screen.
+This was not perfect!! But a quick fix. -->
+
+        <title>To-Do Application</title>
+        <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    </head>
+
+    <body> 
+        <!-- Ui stands for user interface -->
+        <div style="margin-top: 50px;" class="ui container">
+            <h1 class="ui center aligned header">To-Do Application</h1>
+    
+            <form class="ui form" action="/add" method="post">
+                <div class="field">
+                    <label>Todo Title</label>
+                    <input type="text" name="title" placeholder="Enter Todo..."><br>
+                </div>
+                <button class="ui blue button" type="submit">Add</button>
+                <!-- The form is anything the user interacts with -->
+            </form>
+            
+            <hr>
+    
+            {% for todo in todo_list %}
+            <div class="ui segment">
+                <p class="ui big header">{{ todo.id }} | {{ todo.title }}</p>
+    
+                {% if todo.complete == False %}
+                    <span class="ui gray label">Not Complete</span>
+                {% else %}
+                    <span class="ui green label">Completed</span>
+                {% endif %}
+    
+                <a class="ui blue button" href="/update/{{ todo.id }}">Update</a>
+                <a class="ui red button" href="/delete/{{ todo.id }}">Delete</a>
+            </div>
+            {% endfor %}
+        </div>
+
+       
+        
+    </body>
+</html>
+

@@ -1,0 +1,6 @@
+Flask
+SQLALchemy
+Flask-SQLAlchemy
+pytest
+Pandas
+
